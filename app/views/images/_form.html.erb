@@ -1,0 +1,42 @@
+<article class="cont-images">
+  <h2>Fotos de tu publicación </h2>
+  <% @images.each do |images| %>
+    <div class="center-cropped">
+          <%= image_tag(images.url)%>
+          <%= link_to  images, method: :delete, data: { confirm: '¿Estas Seguro?' }, :class => "delete-image" do %>
+            <span class="ion-android-delete"></span>
+          <% end -%>
+    </div>
+
+  <% end %>
+</article>
+<div>
+<%= form_for(@image, :html => { :multipart => true, :class => "cd-form floating-labels" }) do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% @image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+      <legend>Paso 3 selecciona las imagenes para tu publicación</legend>
+      <h4>Selecciona imagen</h4>
+      <div class="file">
+        <%= f.file_field :url %>
+      </div>
+
+        <%= f.hidden_field :publication_id, :value => params[:id_pub] %>
+        <%= f.hidden_field :user_id %>
+
+        <%= f.submit :value => "Agregar imagen", :class => "full-input" %>
+
+      <%= link_to dashboard_path(:controller => "dashboard", :action => "index", :id => current_user.id), :class => 'end-publication' do%>
+        Guardar y finalizar
+      <% end -%>
+<% end -%>
+</div>

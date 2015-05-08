@@ -1,0 +1,962 @@
+@import "forms.styl"
+
+azul_negro = #14192A
+rojo = #E45051
+azul = #459DD9
+
+html, body 
+    height 100%
+    width 100%
+    padding 0
+    margin 0
+
+body
+	background #DDE2E8
+	font-size 16px
+	font-family 'Montserrat', sans-serif
+	margin 0
+	padding 0
+
+footer
+	background azul_negro
+	color white
+	padding .5em
+	width 100%
+	& .cont
+		max-width 1000px
+		margin 0 auto
+		text-align center
+		& .menu
+			padding 1em 0 .5em 0
+			width 100%
+			& .right-slide::after
+				content: '/';
+				padding: 0 19px;
+				color: #fff
+			& p
+				display inline-block
+				& a
+					color white
+		& .social
+			margin .5em 0
+			width 100%
+			& a
+				background white
+				border-radius 50%
+				display inline-block
+				margin 0 .6em
+				height 30px
+				text-align center
+				transition all .25s ease
+				width 30px
+				&:hover
+					box-shadow 0px 0px 5px white
+				& span
+					color azul_negro
+					font-size 1em
+					line-height 30px
+		& .copy
+			margin-top 2em
+			& p
+				margin 0
+				font-size .8em
+		& .rules
+			width 100%
+			& .right-slide::after
+				content: '|';
+				padding: 0 4px;
+				color: #fff
+			& p
+				display inline-block
+				margin .2em 0
+				& a
+					color white
+					font-size .6em
+					padding 0
+
+
+section
+	display block
+
+#cortina
+	display none
+	background rgba(0,0,0,0.6)
+	height 100%
+	position fixed
+	top 0
+	left 0
+	width 100%
+	z-index 1000
+	
+
+#politicas
+	display none
+	background white
+	border-radius .5em
+	max-width 1000px
+	height 90%
+	position absolute
+	font-size .8em
+	top 0
+	left 0
+	right 0
+	margin 3em auto
+	overflow auto
+	padding 2em
+	width 100%
+	z-index 10000
+	& .close
+		color rojo
+		position absolute
+		top 1em
+		right 1em
+		font-size 2em
+	& h1, h2, h3, h4
+		color rojo
+		font-size 1em
+	& p
+		font-size .8em
+	& ul li
+		font-size .8em
+		
+#terminos
+	display none
+	background white
+	border-radius .5em
+	max-width 1000px
+	height 90%
+	position absolute
+	font-size .8em
+	top 0
+	left 0
+	right 0
+	margin 3em auto
+	overflow auto
+	padding 2em
+	width 100%
+	z-index 10000
+	& .close
+		color rojo
+		position absolute
+		top 1em
+		right 1em
+		font-size 2em
+	& h1, h2, h3, h4
+		color rojo
+		font-size 1em
+	& p
+		font-size .8em
+	& ul li
+		font-size .8em
+
+#alert-success
+	background white
+	box-shadow 0px 0px 3px verde
+	color verde
+	font-size 1.1em
+	position fixed
+	bottom 1em
+	left 1em
+	padding 1em
+	text-align center
+	width 300px	
+	
+#alert-danger
+	background white
+	box-shadow 0px 0px 3px rojo
+	color rojo
+	font-size 1.1em
+	position fixed
+	bottom 1em
+	left 1em
+	padding 1em
+	text-align center
+	width 300px	
+
+#menu-not-log
+	background azul_negro
+	left 0
+	position fixed
+	top 0
+	width 100%
+	z-index 10
+	& ul
+		margin 0
+		width 100%
+		& .link-menu
+			color white
+			display inline-block
+			text-decoration none
+			padding 1em
+			&:hover
+				background rojo
+			& li
+				list-style none
+		& .right
+			float right
+			margin-right 3em
+			& .link_sign, .link_log
+				color white
+				display inline-block
+				text-decoration none
+				padding 1em
+				&:hover
+					background rojo
+				& li
+					list-style none
+
+#menu-log
+	background azul_negro
+	box-shadow 0px 4px 8px rgba(0,0,0,0.45)
+	left 0
+	position fixed
+	top 0
+	width 100%
+	z-index 10
+	& ul
+		margin 0
+		width 100%
+		& .link-menu
+			color white
+			display inline-block
+			text-decoration none
+			padding 1em
+			&:hover
+				background rojo
+			& li
+				list-style none
+		& .right
+			float right
+			margin-right 3em
+			& .link-right
+				color white
+				display inline-block
+				text-decoration none
+				padding 1em
+				&:hover
+					background rojo
+				& li
+					list-style none
+					
+#update
+	background azul_negro
+	box-shadow 0px 4px 8px rgba(0,0,0,0.45)
+	left 0
+	position fixed
+	bottom 0
+	width 100%
+	z-index 10
+	& ul
+		margin 0
+		width 100%
+		& .message
+			color white
+			display inline-block
+			text-decoration none
+			padding 1em
+			& li
+				list-style none
+		& .link
+			color white
+			display inline-block
+			text-decoration none
+			padding 1em
+			&:hover
+				background rojo
+			& li
+				list-style none
+
+#content-home
+	height 100%
+	& .head
+		height 100%
+		text-align center
+		& .image
+			background-attachment fixed
+			background url('header.jpg') center center
+			background-position center
+			background-repeat no-repeat
+			background-size cover
+			height 100%
+			left 0
+			position absolute
+			top 0
+			width 100%
+		& .search
+			left 0
+			right 0
+			top 20%
+			position absolute
+			margin 0 auto
+			max-width 80% !important
+			text-align center
+			& h1
+				color white
+				font-size 3em
+				text-shadow 1px 1px #999999
+				margin-bottom 3em
+			& p 
+				display inline-block
+				margin 0 .4em
+				width 20% !important
+				& select
+					width 100% !important
+					&:after
+						background none !important
+			& .input
+				display inline-block
+				margin 0 .4em
+				width 50%
+				& input[type="text"]
+					border none
+					box-shadow 0px 0px 0px 8px rgba(255,255,255,0.25)
+					color azul_negro
+					display block
+					font-size 1.3em
+					font-family 'Montserrat', sans-serif
+					padding .9em 1em
+					width 100%
+					&:focus
+						border none
+						outline none
+			& .go-search
+				text-align center
+				margin-top .6em
+				width 100%
+				& input[type="submit"]
+					border none
+					border-bottom 4px solid #AB3C3C
+					display block
+					background rojo
+					cursor pointer
+					color white
+					display block
+					font-size 1.4em
+					font-family 'Montserrat', sans-serif
+					padding .8em 1.2em
+					margin 3em auto
+					max-width 200px
+					float none !important
+					&:active
+						font-size 1.38em
+					&:focus
+						outline none
+	& .content
+		width 100%
+		& .what
+			background white
+			padding 2em 0
+			width 100%
+			& .cont
+				color azul_negro
+				max-width 1000px
+				margin 0 auto
+				text-align center
+				& h1
+					font-size 1.5em
+					&:after
+						background-color azul_negro
+						display block
+						content ""
+						height 1px
+						margin 12px auto 0
+						width 8.47039%
+				& .images
+					width 100%
+					& figure
+						display inline-block
+						margin .5em
+						max-width 200px
+						position relative
+						& img
+							width 100%
+						& figcaption
+							margin .4em 0
+						& .plus
+							color white
+							cursor pointer
+							border-radius 50%
+							height 35px
+							margin 1em auto
+							width 35px
+							z-index 100000000
+							& span
+								line-height 35px
+						& .infinity
+							background #DD7674
+							transition all .25s ease
+						& .phone
+							background #746395
+							transition all .25s ease
+						& .rocket
+							background #33B294
+							transition all .25s ease
+						& .check
+							background #EE7707
+							transition all .25s ease
+						& .cont-description
+							border-radius .7em
+							box-sizing border-box
+							color white
+							display none
+							height 180px
+							left 0
+							position absolute
+							padding 1.3em .5em
+							top 0
+							width 100%
+							z-index 10
+		& .sponsors
+			padding 2em 0
+			width 100%
+			& .cont
+				max-width 1000px
+				margin 0 auto
+				text-align center
+				& figure
+					display inline-block
+					max-width 350px
+					& img
+						border-radius .6em
+						box-shadow 0px 0px 0px 8px rgba(255,255,255,0.25)
+						width 100%
+				& a
+					border-radius .4em
+					border-bottom 4px solid #AB3C3C
+					display block
+					background rojo
+					cursor pointer
+					color white
+					display block
+					font-size 1.1em
+					font-family 'Montserrat', sans-serif
+					padding .8em 1.2em
+					margin 2em auto
+					max-width 200px
+					float none !important
+					&:active
+						font-size 1.38em
+					&:focus
+						outline none
+
+#head-dashboard
+	background #212945
+	position relative
+	& .search
+		margin -3em auto
+		max-width 80% !important
+		text-align center
+		& h1
+			color white
+			font-size 1.8em
+			margin-top 0
+		& p 
+			display inline-block
+			margin 0 .4em
+			width 20% !important
+			& select
+				width 100% !important
+				&:after
+					background none !important
+		& .input
+			display inline-block
+			margin 0 .4em
+			width 38%
+			& input[type="text"]
+				border none
+				box-shadow 0px 0px 0px 8px rgba(255,255,255,0.25)
+				color azul_negro
+				display block
+				font-size 1.3em
+				font-family 'Montserrat', sans-serif
+				padding .9em 1em
+				width 100%
+				&:focus
+					border none
+					outline none
+		& .go-search
+			display inline-block
+			text-align center
+			margin-top .3em
+			margin 0 .4em
+			width 200px
+			& input[type="submit"]
+				border none
+				border-bottom 4px solid #AB3C3C
+				display block
+				background rojo
+				cursor pointer
+				color white
+				display block
+				font-size 1.4em
+				font-family 'Montserrat', sans-serif
+				padding .8em 1.2em
+				margin 1em auto
+				width 100%
+				float none !important
+				&:active
+					font-size 1.38em
+				&:focus
+					outline none
+	& nav
+		background azul_negro
+		& ul
+			margin 0
+			padding 0
+			& .link-menu
+				color white
+				display inline-block
+				text-decoration none
+				padding 1em
+				&:hover
+					background rojo
+				& li 
+					list-style none
+	& .profile
+		background #212945
+		padding 4em 0 3em 0
+		width 100
+		& h1
+			color white
+			text-align center
+		& h2
+			color white
+			font-size 1.1em
+			text-align center
+		& .info
+			margin 0 2em
+			overflow hidden
+			& figure
+				border-radius 50%
+				background white
+				float left
+				height 65px
+				margin 0
+				overflow hidden
+				width 65px
+				& img
+					height 100%
+					min-width 100%
+					left 50%
+					position relative
+					transform translateX(-50%)
+			& .data
+				float left
+				margin 0 1em
+				& h1
+					color white
+					font-size 1.1em
+					font-weight lighter
+					margin .1em 0
+				& a 
+					color white
+					font-size .8em
+					text-decoration none
+					& span 
+						margin-right .4em
+				& .redes
+					margin-top .1em
+					& a 
+						color white
+						font-size .9em
+						text-decoration none
+						& span 
+							margin-right .4em
+	& .more
+		bottom -25px
+		position absolute
+		right 2em
+		& .more-dashboard
+			background rojo
+			border-radius 50%
+			color white
+			cursor pointer
+			display block
+			font-size 2.2em
+			height 50px
+			text-align center
+			margin 0
+			transition all .45s ease
+			width 50px
+			& span
+				display block
+				line-height 49px
+				transition all .25s ease
+		& .edit-profile
+			background rojo
+			border-radius 50%
+			color white
+			cursor pointer
+			display block
+			font-size 1em
+			height 27px
+			text-align center
+			right .8em
+			margin 0
+			position absolute
+			transition all .25s ease
+			top -2.4em
+			overflow hidden
+			width 27px
+			& span
+				display inline-block
+				line-height 28px
+				& p
+					display none
+					margin 0
+					width 110px
+		& .log-out-profile
+			background rojo
+			border-radius 50%
+			color white
+			cursor pointer
+			display block
+			font-size 1em
+			height 27px
+			text-align center
+			right 3.8em
+			margin 0
+			position absolute
+			transition all .25s ease
+			top .8em
+			overflow hidden
+			width 27px
+			& span
+				display block
+				line-height 28px
+				& p
+					display none
+					margin 0 .3em
+					width 110px
+		& .new-pub-profile
+			background rojo
+			border-radius 50%
+			color white
+			cursor pointer
+			display block
+			font-size 1em
+			height 27px
+			text-align center
+			right .8em
+			margin 0
+			position absolute
+			top 3.8em
+			overflow hidden
+			transition all .25s ease
+			width 27px
+			& span
+				display block
+				line-height 28px
+				& p
+					display none
+					margin 0 .3em
+					width 130px
+		& .hide-profile
+			display none
+
+#cont-dashboard
+	& .cont
+		margin 3em auto
+		max-width 1100px
+		text-align center
+		z-index 1000
+		& .link-new-pub
+			color white
+			display block
+			background rojo
+			padding 1em
+			margin 2em auto
+			width 250px
+		& .properties
+			display inline-block
+			height 300px
+			position relative
+			margin 1.8em
+			max-width 300px
+			&:hover > .img-con img
+				transform translateX(-55%) 
+			&:hover > .content
+				background azul_negro
+			& .price
+				background rojo
+				color white
+				font-size 1.2em
+				position absolute
+				right 0
+				top 0
+				padding .4em 1em
+				& .icon-function
+					color white
+					margin 0 .3em
+			& .avatar
+				border-radius 50%
+				background white
+				float left
+				height 65px
+				margin 0
+				overflow hidden
+				left -1.3em
+				position absolute
+				top -1.3em
+				width 65px
+				z-index 1000
+				& img
+					height 100%
+					min-width 100%
+					left 50%
+					position relative
+					transform translateX(-50%)
+			& .img-con
+				height 100%
+				margin 0
+				overflow hidden
+				width 100%
+				& img
+					height 100%
+					min-width 100%
+					left 50%
+					position relative
+					transform translateX(-50%)
+					transition all .30s ease
+			& .content
+				background rgba(20,25,42,0.6)
+				box-sizing border-box
+				bottom 1em
+				color white
+				position absolute
+				left 0
+				padding .5em .5em
+				text-align center
+				transition all .30s ease
+				width 100%
+				& .title
+					font-weight lighter
+					font-size .9em
+					margin .3em 0
+				& .cont-info
+					margin 0
+					padding 0
+					width 100%
+					& li
+						display inline-block
+						list-style none
+						margin .3em .4em
+						& span
+							margin 0 .2em
+
+#show-publication
+	color azul_negro
+	padding 6em 0 3em 0
+	width 100%
+	& .cont
+		margin 0 auto
+		max-width 1100px
+		& .top-info
+			overflow hidden
+			& .title
+				float left
+				& h1
+					margin 0
+					font-size 2.3em
+				& h2
+					margin 0
+					font-size 1.2em
+			& .show-profile
+				cursor pointer
+				background azul_negro
+				color white
+				border-radius .5em .5em 0 0
+				right 1em
+				position fixed
+				bottom 0em
+				border 2px solid white
+				box-shadow 0px 0px 3px rgba(0,0,0,0.3)
+				padding .6em .6em .6em 1em
+				width 250px
+				z-index 5000
+				& span
+					position absolute
+					top .27em
+					right .8em
+					font-size 1.4em
+			& .contact
+				display none
+				background azul_negro
+				color white
+				border-radius .5em .5em 0 0
+				right 1em
+				position fixed
+				bottom 0em
+				border 2px solid white
+				box-shadow 0px 0px 3px rgba(0,0,0,0.3)
+				padding 1em
+				width 250px
+				z-index 5000
+				& .close-contact
+					cursor pointer
+					position absolute
+					top -.8em
+					right .3em
+					font-size 1.4em
+				& figure
+					border-radius 50%
+					background #fff
+					height 85px
+					margin 0 auto
+					overflow hidden
+					width 85px
+					& img
+						width 100%
+				& h2
+					font-size 1.2em
+				& a
+					color white
+					display block
+					background rojo
+					text-align center
+					padding .5em 0
+					width 100%
+			& .price
+				background rojo
+				color white
+				float right
+				padding .8em 1.5em
+				text-align center
+				& p
+					margin 0
+				& h2
+					margin 0
+		& .gallery-cont-first
+			padding 2em 0 0 0
+			width 100%
+		& .gallery-cont-two
+			display none
+			padding 2em 0
+			width 100%
+		& .features
+			font-size 0px
+			text-align center
+			width 100%
+			& div
+				border solid 1px white
+				font-size 16px
+				display inline-block
+				padding .7em 1em
+				text-align left
+				width 275px
+				& p
+					margin 0
+					font-size 1.1em
+				& h2
+					margin .3em 0 0 0
+					font-size 1.2em
+		& .other-features
+			text-align center
+			padding 2em 0
+			width 100%
+			& .content-features
+				margin 1em auto
+				width 90%
+				& .ok
+					color white
+					background #41BB61
+				& .no-ok
+					color white
+					background rojo
+				& div
+					font-size 16px
+					display inline-block
+					padding 1.3em 1em
+					margin .5em
+					width 275px
+					& p
+						margin 0
+						font-size 1.1em
+					& h2
+						margin .3em 0 0 0
+						font-size 1.2em
+		& .description-cont
+			padding 0 .9em
+			& h1
+				border-bottom 1px solid white
+				font-size 1.4em
+				padding .4em 0
+			& h2
+				font-size 1.1em
+			& .text
+				color #4D576D
+			
+
+#notice
+	position absolute
+
+.cont-images
+	background white
+	border-radius .5em
+	box-shadow 1px 1px 3px rgba(0,0,0,0.35)
+	max-width 900px
+	margin 5em auto 1em auto
+	text-align center
+	padding 1em 1em 2em 1em
+	& h2
+		color #14192a
+		margin-top .3em
+		margin-bottom 1em
+		&:after
+			background-color azul_negro
+			display block
+			content ""
+			height 1px
+			margin 6px auto 0
+			width 8.47039%
+	.center-cropped
+		border-radius .6em
+		display inline-block
+		width 150px
+		height 150px
+		overflow hidden
+		position relative
+		margin 0 1em
+		img 
+			height 100%
+			min-width 100%
+			left 50%
+			position relative
+			transform translateX(-50%)
+		& .delete-image
+			bottom 0px
+			background rojo
+			position absolute
+			text-align center
+			left 0
+			width 100%
+			& span
+				color white
+				font-size 1.4em
+
+@media screen and (max-width : 650px)
+   
+	.gallery-cont-first
+		display none
+	.gallery-cont-two
+		display block !important
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

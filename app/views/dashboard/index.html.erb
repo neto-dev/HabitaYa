@@ -1,0 +1,119 @@
+<% content_for :title, "Perfil del usuario" %>
+
+<% if user_signed_in? && current_user.updated == 0 %>
+    <nav id="update">
+      <ul>
+        <a class="message"><li>Favor de completar tu perfil al 100%, para lograr mejores resultados en la plataforma: </li></a>
+        <a href="/users/edit" class="link">
+          <li> Actualizar perfil</li>
+        </a>
+      </ul>
+    </nav>
+<% end %>
+
+<% @user = User.where(:id => params[:id]).first%>
+
+<p id="notice"><%= notice %></p>
+
+<header id="head-dashboard">
+  <nav>
+    <ul>
+        <a href="" class="link-menu">
+          <li>Venta</li>
+        </a>
+        <a href="" class="link-menu">
+          <li>Renta</li>
+        </a>
+    </ul>
+  </nav>
+  <div class="profile">
+    <div class="info">
+      <figure>
+        <%= image_tag @user.avatar, :alt => "Avatar", :title => "Avatar"%>
+      </figure>
+      <div class="data">
+        <h1><%= @user.name %></h1>
+        <a href=""><span class="ion-android-pin"></span><%= @user.estate %>, <%= @user.city %>.</a>
+        <div class="redes">
+          <a href="mailto:<%= @user.email%>"><span class="ion-android-mail"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <% if current_user.id == params[:id].to_f %>
+      <div class="more">
+        <div class="more-dashboard">
+          <span class="ion-android-add more-profile"></span>
+        </div>
+        <%= link_to edit_user_registration_path, :class => 'edit-profile hide-profile' do%>
+          <span class="ion-android-create"><p>Editar Perfil</p></span>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, :class => "log-out-profile hide-profile" do%>
+          <span class="ion-log-out"><p>Cerrar Sesión</p></span>
+        <% end %>
+        <%= link_to new_publication_path, :class => "new-pub-profile hide-profile" do%>
+          <span class="ion-document-text"><p>Nuevo Anuncio</p></span>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</header>
+
+<main id="cont-dashboard">
+  <section class="cont">
+  <% if user_signed_in? && current_user.id == params[:id].to_f && @publications.empty? %>
+      <h1>No tienes anuncios aun, crea uno nuevo enseguida </h1>
+      <%= link_to new_publication_path, :class => 'link-new-pub' do%>
+        Agregar anuncio
+      <%end%>
+    <% end %>
+  <% @publications.each do |publication| %>
+    <%= link_to anuncio_path(publication) do%> 
+      <article class="properties">
+        <% @avatar = User.where(:id => publication.user_id).first %>
+        <figure class="avatar"><%= image_tag @avatar.avatar, :alt => "Avatar", :title => "Avatar"%></figure>
+        <% @image = Image.where(:publication_id => publication.id).first%>
+        <% if @image == nil%>
+          <figure class="img-con"><%= image_tag "default-no-image.png", :alt => "Condominio", :title => "Condominio"%></figure>
+        <% else %>
+          <figure class="img-con"><%= image_tag @image.url, :alt => "Condominio", :title => "Condominio"%></figure>
+        <% end -%>
+        <% if user_signed_in? && current_user.id == params[:id].to_f %>
+          <div class="price">
+            <%= link_to publication, :class => "icon-function" do%>
+              <span class="ion-android-open"></span>
+            <% end -%>
+            <%= link_to edit_publication_path(publication), :class => "icon-function" do%>
+              <span class="ion-android-create"></span>
+            <% end -%>
+            <%= link_to publication, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el registro?' }, :class => "icon-function" do%>
+              <span class="ion-android-delete"></span>
+            <% end -%>
+          </div>
+        <% else %>
+          <div class="price">
+            $<%= number_with_delimiter(publication.price) %>
+          </div>
+        <% end -%>
+        <div class="content">
+          <h1 class="title"><%= publication.title %></h1>
+          <ul class="cont-info">
+            <% Ubication.where(:publication_id => publication.id).each do |ubication|%>
+              <li><span class="ion-location"></span> <%= ubication.town %></li>
+            <% end %>
+            <%if publication.type_add == "Bodega" || publication.type_add == "Terreno" %>
+              <li><span class="ion-ios-home"></span> <%= publication.type_add %></li>
+              <li>Dimenciones: <%= publication.size %>m2</li>
+            <%else%>
+              <li><span class="ion-ios-home"></span> <%= publication.type_add %></li>
+              <li><span class="icon-room"></span> <%= publication.rooms %></li>
+              <li><span class="icon-bathroom"></span> <%= publication.bathrooms %></li>
+            <% end -%>
+          </ul>
+        </div>
+      </article>
+    <% end -%>
+  <% end -%>
+   </section>
+ </main>

@@ -1,0 +1,83 @@
+<% content_for :title, "Editar información del perfil" %>
+<div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { :multipart => true, method: :put, :class => "cd-form floating-labels"}) do |f| %>
+  <%= devise_error_messages! %>
+  <fieldset>
+    <legend>Actualizar perfil</legend>
+    <div class="icon">
+      <%= f.label :name, "Nombre completo o nombre de compañía", :class => "cd-label"%>
+      <%= f.text_field :name,  :class => "user", :required => true, autocomplete: "off", autofocus: true   %>
+    </div>
+    <div class="icon">
+      <%= f.label :email, "Correo Electrónico", :class => "cd-label"%>
+      <%= f.email_field :email,  :class => "email", :required => true%>
+    </div>
+
+    <div class="icon">
+      <%= f.label :phone, "Teléfono fijo", :class => "cd-label"%>
+      <%= f.text_field :phone,  :class => "phone", autocomplete: "off" %>
+    </div>
+    
+    <div class="icon">
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :celphone, "Teléfono celular", :class => "cd-label"%>
+      <%= f.text_field :celphone,  :class => "phone", :required => true, autocomplete: "off" %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :address, "Dirección completa", :class => "cd-label"%>
+      <%= f.text_field :address,  :class => "ubication", :required => true, autocomplete: "off" %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :estate, "Estado", :class => "cd-label"%>
+      <%= f.text_field :estate,  :class => "ubication", :required => true, autocomplete: "off" %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :city, "Ciudad", :class => "cd-label"%>
+      <%= f.text_field :city,  :class => "ubication", :required => true, autocomplete: "off" %>
+    </div>
+
+
+    <div class="icon">
+      <%= f.label :postal, "Código Postal", :class => "cd-label"%>
+      <%= f.number_field :postal,  :class => "ubication", :required => true, autocomplete: "off" %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :web, "Página Web", :class => "cd-label"%>
+      <%= f.text_field :web,  :class => "web", autocomplete: "off" %>
+    </div>
+    
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+     <legend>Nueva contraseña (Dejar en blanco si no se desea cambiar)</legend>
+    <div class="icon">
+      <%= f.label :password, "Nueva Contraseña", :class => "cd-label" %>
+      <%= f.password_field :password, autocomplete: "off", :class => "key" %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :password_confirmation, "Repetir Contraseña", :class => "cd-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "key" %>
+    </div>
+    <legend>Validación</legend>
+    <div class="icon">
+      <%= f.label :current_password, "Contraseña (para realizar cambios)", :class => "cd-label" %> 
+      <%= f.password_field :current_password, autocomplete: "off", :class => "key"  %>
+    </div>
+
+    <%= f.hidden_field :updated, :value => "1" %>
+
+    <%= f.submit :value => "Actualizar" %>
+
+<% end %>
+  <p>
+    <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { :confirm => "¿Estás seguro que deseas cancelar tu cuenta?" }, :method => :delete, :class => "cancel-button" %>
+  </p>
+</div>

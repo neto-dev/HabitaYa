@@ -1,0 +1,151 @@
+<% content_for :title, "Bienvenido a HabitaYa la mejor manera de vender rentar y comprar condominios" %>
+
+<main id="content-home">
+	<header class="head">
+		<div class="image"></div>
+		<form action="/search" class="cd-form floating-labels search" method="get">
+			<h1>HabitaYa la manera elegante y profesional de vender y comprar inmuebles.</h1>
+			<p class="cd-select icon">
+				<select name="type" id="" class="down opt-select">
+					<option value="Venta">Venta</option>
+					<option value="Renta">Renta</option>
+				</select>
+			</p>
+			<p class="cd-select icon">
+				<select name="type_add" id="" class="down opt-select">
+					<option value="Casa">Casa</option>
+					<option value="Departamento">Departamento</option>
+					<option value="Oficina">Oficina</option>
+					<option value="Local">Local</option>
+					<option value="Bodega">Bodega</option>
+					<option value="Terreno">Terreno</option>
+				</select>
+			</p>
+			<div class="input">
+				<input type="text" name='q' <%= @q %> placeholder="Donde ej. Durango, Mazatlán, Nayarit">
+			</div>
+			<div class="go-search">
+				<input type="submit" value="Buscar">
+			</div>
+		</form>
+	</header>
+	<section class="content">
+		<article class="what">
+			<div class="cont">
+				<h1>¿QUE ES HABITAYA?</h1>
+				<p>HabitaYa es una plataforma 100% gratuita en donde podrás ofrecer tu inmueble de manera profesional y elegante.</p>
+				<div class="images">
+					<figure class="parent-descriptions">
+						<%= image_tag "infinity.png", :alt => "Inlimitado", :title => "Inlimitado"%>
+						<figcaption>
+							Inlimitado
+						</figcaption>
+						<div class="plus infinity">
+							<span class="ion-plus"></span>
+						</div>
+						<div class="cont-description infinity">
+							Publica todos tus inmuebles, sin límite de publicaciones, sin pagos totalmente gratuita, sin límite de imágenes y en nuestra lista de inmuebles.
+						</div>
+					</figure>
+					<figure class="parent-descriptions">
+						<%= image_tag "phone.png", :alt => "Multiplataforma", :title => "Multiplataforma"%>
+						<figcaption>
+							Multiplataforma
+						</figcaption>
+						<div class="plus phone">
+							<span class="ion-plus"></span>
+						</div>
+						<div class="cont-description phone">
+							Todos nuestros usuarios disfrutaran de HabitaYa en cualquiera de sus dispositivos ya que cuenta con la tecnología Responsive Design.
+						</div>
+					</figure>
+					<figure class="parent-descriptions">
+						<%= image_tag "rocket.png", :alt => "Impulso", :title => "Impulso"%>
+						<figcaption>
+							Impulso
+						</figcaption>
+						<div class="plus rocket">
+							<span class="ion-plus"></span>
+						</div>
+						<div class="cont-description rocket">
+							Todas tus publicaciones serán impulsadas en diferentes medios disponibles como Facebook y otras aplicaciones compatibles.
+						</div>
+					</figure>
+					<figure class="parent-descriptions">
+						<%= image_tag "check.png", :alt => "Sencillo", :title => "Sencillo"%>
+						<figcaption>
+							Sencillo
+						</figcaption>
+						<div class="plus check">
+							<span class="ion-plus"></span>
+						</div>
+						<div class="cont-description check">
+							Publica tus inmuebles sin tantas trabas ni rodeos de la manera más sencilla y limpia, y a su vez darle profesionalismo a tus ventas.
+						</div>
+					</figure>
+				</div>
+			</div>
+		</article>
+		<article class="sponsors">
+			<div class="cont">
+				<figure>
+					<%= image_tag "sponsors.png", :alt => "Patrosinio", :title => "Patrosinio"%>
+				</figure>
+				<figure>
+					<%= image_tag "sponsors.png", :alt => "Patrosinio", :title => "Patrosinio"%>
+				</figure>
+				<a href="mailto:hello@habitaya.mx" class="contact">Contactanos</a>
+			</div>
+		</article>
+	</section>
+	<footer>
+			<div class="cont">
+				<div class="menu">
+					<p class="right-slide">
+						<a href="">Venta</a>
+					</p>
+					<p class="right-slide">
+						<a href="">Renta</a>
+					</p>
+					<p class="right-slide">
+						<a href="">Directorio</a>
+					</p>
+					<p>
+						<a href="mailto:hello@habitaya.mx">Contacto</a>
+					</p>
+				</div>
+				<div class="social">
+					<a href="">
+						<span class="ion-social-facebook"></span>
+					</a>
+					<a href="">
+						<span class="ion-social-twitter"></span>
+					</a>
+					<a href="tel:6181875007">
+						<span class="ion-android-call"></span>
+					</a>
+					<a href="mailto:hello@habitaya.mx">
+						<span class="ion-android-mail"></span>
+					</a>
+				</div>
+				<div class="copy">
+					<p>
+						© 2015 HabitaYa.
+					</p>
+				</div>
+				<div class="rules">
+					<p class="right-slide">
+						<a href="#terminos" class="show-terminos">Términos y condiciones</a>
+					</p>
+					<p>
+						<a href="#politicas" class="show-politicas">Política de Privacidad</a>
+					</p>
+				</div>
+				<div class="rules">
+					<p>
+						<a href="">Un servicio de Heptagram D&D</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+</main>

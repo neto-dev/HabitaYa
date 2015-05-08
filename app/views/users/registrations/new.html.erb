@@ -1,0 +1,48 @@
+<% content_for :title, "Nueva cuenta en HabitaYa" %>
+
+<div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:class => "cd-form floating-labels"}) do |f| %>
+  <%= devise_error_messages! %>
+<fieldset>
+  <legend>Registrate</legend>
+   <h4>Tipo de Cuenta</h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :role , options_for_select([['Particular', "particular"], ['Inmobiliaria', "inmobiliaria"], ['Constructora', "constructora"]]), {}, { :class => 'down' }%>
+      </p>
+    </div>
+    <div class="icon">
+      <%= f.label :email, "Correo electrónico", :class => "cd-label"%>
+      <%= f.email_field :email, autofocus: true, :class => "email", :required => true, autocomplete: "off"  %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :name, "Nombre completo", :class => "cd-label"%>
+      <%= f.text_field :name,  :class => "user", :required => true, autocomplete: "off"  %>
+    </div>
+
+      <%= f.hidden_field :avatar %>
+    <div class="icon">
+      <%= f.label :password, "Contraseña (mayor a 8 caracteres)",:class => "cd-label" %>
+      <% if @validatable %>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "off", :class => "key", :required => true %>
+    </div>
+
+    <div class="icon">
+      <%= f.label :password_confirmation, "Confirmar contraseña",:class => "cd-label"%>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "key", :required => true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Registrate" %>
+    </div>
+    <div>
+      *Al registrarte aceptas los <a href="#terminos" class="show-terminos">Términos y condiciones</a> y las <p>
+            <a href="#politicas" class="show-politicas">Política de Privacidad</a> de HabitaYa.
+          </p>
+    </div>
+    <%= render "users/shared/links" %>
+<% end %>
+</div>
+  

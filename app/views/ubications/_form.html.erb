@@ -1,0 +1,57 @@
+<% content_for :title, "Paso 2: Agregar ubicación" %>
+<div>
+<%= form_for(@ubication, :html => {:class => "cd-form floating-labels"}) do |f| %>
+  <% if @ubication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ubication.errors.count, "error") %> prohibited this ubication from being saved:</h2>
+
+      <ul>
+      <% @ubication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <legend>Paso 2 agrega la ubicación de tu inmueble</legend>
+      <div class="icon">
+        <%= f.label :country, "País", :class => "cd-label" %>
+        <%= f.text_field :country, :class => "ubication", :required => true, autocomplete: "off"  %>
+      </div>
+      <div class="icon">
+        <%= f.label :city, "Ciudad", :class => "cd-label" %>
+        <%= f.text_field :city, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :town, "Estado", :class => "cd-label"  %>
+        <%= f.text_field :town, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :street, "Calle", :class => "cd-label" %>
+        <%= f.text_field :street, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :number_out, "Número exterior", :class => "cd-label" %>
+        <%= f.number_field :number_out, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :number_in, "Número interior", :class => "cd-label" %>
+        <%= f.number_field :number_in, :class => "ubication", autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :colony, "Colonia", :class => "cd-label" %>
+        <%= f.text_field :colony, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+      <div class="icon">
+        <%= f.label :postal, "Código postal", :class => "cd-label" %>
+        <%= f.number_field :postal, :class => "ubication", :required => true, autocomplete: "off" %>
+      </div>
+
+        <%= f.hidden_field :publication_id, :value => params[:id_pub] %>
+        <%= f.hidden_field :user_id %>
+
+      <div class="actions">
+        <%= f.submit :value => "Paso 3"%>
+      </div>
+    <% end %>
+</div>

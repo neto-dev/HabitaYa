@@ -1,0 +1,126 @@
+<% content_for :title, "Paso 1: Agregar datos generales" %>
+<div>
+<%= form_for(@publication,:html => {:class => "cd-form floating-labels"}) do |f| %>
+  <% if @publication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
+
+      <ul>
+      <% @publication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <legend>Paso 1 datos principales del inmueble</legend>
+
+    <div class="icon">
+      <%= f.label :title, "Título de la publicación", :class => "cd-label" %>
+      <%= f.text_field :title, :class => "house", :required => true, autocomplete: "off" %>
+    </div>
+    <h4>Tipo de inmueble</h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :type_add, options_for_select([['Casa', "Casa"], ['Departamento', "Departamento"], ['Oficina', "Oficina"], ['Local', "Local"], ['Bodega', "Bodega"], ['Terreno', "Terreno"]]), {}, { :class => 'down opt-select' }  %>  
+      </p>       
+    </div>
+    <h4>Tipo de anuncio</h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :type_property, options_for_select([['Venta', "Venta"], ['Renta', "Renta"]]), {}, { :class => 'down' } %>
+      </p>
+    </div>
+    <div class="icon">
+      <%= f.label :size, "Superficie (m2)", :class => "cd-label" %>
+      <%= f.number_field :size, :class => "house", :required => true, autocomplete: "off" %>
+    </div>
+    <div class="icon">
+      <%= f.label :price, "Costo", :class => "cd-label" %>
+      <%= f.number_field :price, :class => "house", :required => true, autocomplete: "off" %>
+    </div>
+
+    <h4 class="rooms-cont">Número de habitaciones</h4>
+    <div>
+      <p class="cd-select icon rooms-cont">
+        <%= f.select :rooms, options_for_select([['1 Habitación', "1 Habitación"], ['2 Habitaciones', "2 Habitaciones"], ['3 Habitaciones', "3 Habitaciones"], ['4 Habitaciones', "4 Habitaciones"], ['5 Habitaciones', "5 Habitaciones"], ['6 o mas  Habitaciones', "6 o mas Habitaciones"]]), {}, { :class => 'down' } %>
+       </p>  
+    </div>
+
+    <h4 class="bathroom-cont">Número de baños</h4>
+    <div>
+      <p class="cd-select icon bathroom-cont">
+        <%= f.select :bathrooms, options_for_select([['1', "1"], ['1 1/2', "1 1/2"], ['2', "2"], ['2 1/2', "2 1/2"], ['3', "3"], ['3 1/2', "3 1/2"], ['Mas de 4', "Mas de 4"]]), {}, { :class => 'down' } %>
+       </p>  
+    </div>
+
+    <h4>Antigüedad del inmueble </h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :old, options_for_select([['Nuevo', "Nuevo"], ['Menos de 1 año', "Menos de 1 año"], ['Menos de 5 años', "Menos de 5 años"], ['Menos de 10 años', "Menos de 10 años"], ['Mas de 10 años', "Mas de 10 años"]]), {}, { :class => 'down' } %>
+       </p>  
+    </div>
+
+    <h4>Número de plantas</h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :floors, options_for_select([['1 Nivel', "1 Nivel"], ['2 Niveles', "2 Niveles"], ['3 Niveles', "3 Niveles"], ['4 o más niveles', "4 o más niveles"]]), {}, { :class => 'down' } %>
+       </p>  
+    </div>
+
+    <h4>Nivel del inmueble</h4>
+    <div>
+      <p class="cd-select icon">
+        <%= f.select :floor_loc, options_for_select([['Planta baja', "Planta baja"], ['2do Piso', "2do Piso"], ['3er Piso', "3er Piso"], ['4to Piso o superior', "4to Piso o superior"]]), {}, { :class => 'down' } %>
+       </p>  
+    </div>
+
+    <div>
+      <h4>Caracteristicas</h4>
+        <ul class="cd-form-list">
+          <li>
+            <%= f.check_box :furnished %>
+            <%= f.label :furnished, "Amueblado" %>
+          </li>
+          <li>
+            <%= f.check_box :garage %>
+            <%= f.label :garage, "Cochera" %>
+          </li>
+       
+          <li>
+            <%= f.check_box :kitchen %>
+            <%= f.label :kitchen, "Cocina integral" %>
+          </li>
+          
+          <li>
+            <%= f.check_box :mascot %>
+            <%= f.label :mascot, "Sin mascotas"%>
+          </li>
+        
+          <li>
+            <%= f.check_box :closets %>
+            <%= f.label :closets, "Closets" %>
+          </li>
+          
+          <li>
+            <%= f.check_box :internet %>
+            <%= f.label :internet, "Internet" %>
+          </li>
+        </ul> 
+    </div>
+
+    <div class="icon">
+      <%= f.label :description, "Escribe una pequeña descripción del inmueble", :class => "cd-label"%>
+      <%= f.text_area :description, :class => "message", :required => true %>
+    </div>
+
+
+      <%= f.hidden_field :date, :value => "" %>
+      <%= f.hidden_field :status, :value => "on" %>
+      <%= f.hidden_field :user_id %>
+
+    <div class="actions">
+      <%= f.submit :value => "Paso 2" %>
+    </div>
+<% end %>
+</div>

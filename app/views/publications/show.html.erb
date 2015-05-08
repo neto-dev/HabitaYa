@@ -1,0 +1,135 @@
+<p id="notice"><%= notice %></p>
+
+<main id="show-publication">
+  <section class="cont">
+    <% @ubication = Ubication.where(:publication_id => @publication.id).first%>
+    <% @user = User.where(:id => @publication.user_id).first%>
+    <article class="top-info">
+      <div class="title">
+        <h1>
+          <%= @publication.title %>
+        </h1>
+        <h2>
+          <%= @ubication.town %>, <%= @ubication.city %>.
+        </h2>
+      </div>
+      <div class="show-profile">
+        Contactar Anunciante <span class="ion-plus-circled"></span>      </div>
+      <div class="contact">
+        <p class="close-contact"><span class="ion-close-circled"></span></p>
+        
+        <figure>
+          <%= image_tag @user.avatar, :alt => "Avatar", :title => "Avatar"%>
+        </figure>
+        <h2><%= @user.name %></h2>
+        <h3><span class="ion-android-call"></span> <%= @user.celphone %></h3>
+        <a href="mailto:<%= @user.email%>">
+          <span class="ion-android-mail"></span> Contactar
+        </a>
+      </div>
+      <div class="price">
+        <p>En <%= @publication.type_property %></p>
+        <h2>$<%= number_with_delimiter(@publication.price) %></h2>
+      </div>
+    </article>
+    <article class="gallery-cont-first">
+      <ul id="vertical" class="gallery list-unstyled lightSlider lsGrabbing lSSlide">
+        <% @image = Image.where(:publication_id => @publication.id).first %>
+        <% if @image == nil%>
+            <li data-thumb="default-no-image.png">
+              <%= image_tag "default-no-image.png"%>
+            </li>
+        <% else %>
+          <% Image.where(:publication_id => @publication.id).each do |image|%>
+                <li data-thumb="<%= image.url %>">
+                  <%= image_tag image.url%>
+                </li>
+            <% end -%>
+        <% end -%>
+      </ul>
+    </article>
+    <article class="gallery-cont-two">
+      <ul id="adaptive" class="content-slider">
+        <% if @image == nil%>
+            <li data-thumb="default-no-image.png">
+              <%= image_tag "default-no-image.png"%>
+            </li>
+        <% else %>
+          <% Image.where(:publication_id => @publication.id).each do |image|%>
+            <li data-thumb="<%= image.url %>">
+              <%= image_tag image.url%>
+            </li>
+          <% end -%>
+        <% end -%>
+      </ul>
+    </article>
+    <article class="features">
+      <div>
+        <p>Tipo de Inmueble</p>
+        <h2><%= @publication.type_add %></h2>
+      </div>
+       <div>
+        <p>Precio <%= @publication.type_property %></p>
+        <h2>$<%= number_with_delimiter(@publication.price) %></h2>
+      </div>
+      <div>
+        <p>Superficie</p>
+        <h2><%= @publication.size %>m2</h2>
+      </div>
+      <div>
+        <p>Habitaciones</p>
+        <h2><%= @publication.rooms %></h2>
+      </div>
+      <div>
+        <p>Baños</p>
+        <h2><%= @publication.bathrooms %></h2>
+      </div>
+      <div>
+        <p>Antigüedad</p>
+        <h2><%= @publication.old %></h2>
+      </div>
+      <div>
+        <p>Número de plantas</p>
+        <h2><%= @publication.floors %></h2>
+      </div>
+      <div>
+        <p>Locacion del inmueble</p>
+        <h2><%= @publication.floors %></h2>
+      </div>
+    </article>
+    <article class="other-features">
+      <h1>Detalles del inmueble</h1>
+        <div class="content-features">
+          <div <%if @publication.closets == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Closets</p>
+          </div>
+          <div <%if @publication.kitchen == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Cocina Integral</p>
+          </div>
+          <div <%if @publication.garage == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Cochera</p>
+          </div>
+          <div <%if @publication.mascot == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Sin mascotas</p>
+          </div>
+          <div <%if @publication.furnished == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Amueblado</p>
+          </div>
+          <div <%if @publication.internet == 1%><%= "class=ok"%><% else %><%= "class=no-ok"%><% end -%>>
+            <p>Internet</p>
+          </div>
+      </div>
+    </article>
+    <article class="description-cont">
+      <h1>Descripcion de <%= @publication.title %></h1>
+      <h2>Ubicacion: <%= @ubication.street %> #<%= @ubication.number_out %> <% if @ubication.number_in%> Interior <%= @ubication.number_in %> <% end -%> <%= @ubication.colony %> <%= @ubication.town %>, <%= @ubication.city %>. CP<%= @ubication.postal %></h2>
+      <div class="text"> 
+        <%= @publication.description %>
+      </div>
+    </article>
+</section>
+</main>
+
+  
+
+
